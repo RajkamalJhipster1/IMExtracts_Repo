@@ -1,0 +1,37 @@
+entity IDXOrganisation {
+     	CDB  Integer,
+     	OrganisationName String,
+     	NationalPracticeCode String,
+        Active Boolean
+}
+
+entity Agreement {
+	Agreementname String,
+    Agreementtypeid Integer,
+    Deleted Boolean,
+    CreatedDate Instant    
+}
+
+entity AgreementOrganisation {
+	CreatedDate Instant,
+    ModifiedDate Instant
+}
+
+entity AgreementConfiguration {
+	Configuration AnyBlob,
+    IsActive Boolean,
+    Createddate Instant,
+    ModifiedDate Instant
+}
+
+relationship OneToOne {
+	IDXOrganisation{Organisationid} to AgreementOrganisation
+}
+
+relationship OneToOne {
+	Agreement{Agreementid} to AgreementOrganisation
+}
+
+relationship OneToMany {
+	Agreement{Agreementid} to AgreementConfiguration
+}
