@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="iDXOrganisation">
+            <h2><span>IDX Organisation</span> {{iDXOrganisation.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>C DB</span></dt>
+                <dd>
+                    <span>{{iDXOrganisation.cDB}}</span>
+                </dd>
+                <dt><span>Organisation Name</span></dt>
+                <dd>
+                    <span>{{iDXOrganisation.organisationName}}</span>
+                </dd>
+                <dt><span>National Practice Code</span></dt>
+                <dd>
+                    <span>{{iDXOrganisation.nationalPracticeCode}}</span>
+                </dd>
+                <dt><span>Active</span></dt>
+                <dd>
+                    <span>{{iDXOrganisation.active}}</span>
+                </dd>
+                <dt><span>Organisationid</span></dt>
+                <dd>
+                    <div *ngIf="iDXOrganisation.organisationid">
+                        <a [routerLink]="['/agreement-organisation', iDXOrganisation.organisationid?.id, 'view']">{{iDXOrganisation.organisationid?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/idx-organisation', iDXOrganisation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

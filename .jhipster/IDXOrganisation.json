@@ -1,0 +1,40 @@
+{
+    "name": "IDXOrganisation",
+    "fields": [
+        {
+            "fieldName": "cDB",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "organisationName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nationalPracticeCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "active",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "agreementOrganisation",
+            "otherEntityRelationshipName": "iDXOrganisation",
+            "relationshipName": "organisationid",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190307123228",
+    "entityTableName": "idx_organisation",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
