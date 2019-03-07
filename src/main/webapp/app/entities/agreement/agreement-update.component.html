@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-agreement-heading">Create or edit a Agreement</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!agreement.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="agreement.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_agreementname">Agreementname</label>
+                    <input type="text" class="form-control" name="agreementname" id="field_agreementname"
+                        [(ngModel)]="agreement.agreementname" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_agreementtypeid">Agreementtypeid</label>
+                    <input type="number" class="form-control" name="agreementtypeid" id="field_agreementtypeid"
+                        [(ngModel)]="agreement.agreementtypeid" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_deleted">Deleted</label>
+                    <input type="checkbox" class="form-control" name="deleted" id="field_deleted"
+                        [(ngModel)]="agreement.deleted" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_createdDate">Created Date</label>
+                    <div class="d-flex">
+                        <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" [(ngModel)]="createdDate" placeholder="YYYY-MM-DD HH:mm"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_agreementid">Agreementid</label>
+                    <select class="form-control" id="field_agreementid" name="agreementid" [(ngModel)]="agreement.agreementid">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="agreementOrganisationOption.id === agreement.agreementid?.id ? agreement.agreementid : agreementOrganisationOption" *ngFor="let agreementOrganisationOption of agreementids; trackBy: trackAgreementOrganisationById">{{agreementOrganisationOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

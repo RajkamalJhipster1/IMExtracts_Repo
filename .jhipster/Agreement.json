@@ -1,0 +1,46 @@
+{
+    "name": "Agreement",
+    "fields": [
+        {
+            "fieldName": "agreementname",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "agreementtypeid",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "createdDate",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "agreementOrganisation",
+            "otherEntityRelationshipName": "agreement",
+            "relationshipName": "agreementid",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "agreementConfiguration",
+            "otherEntityRelationshipName": "agreement",
+            "relationshipName": "agreementid"
+        }
+    ],
+    "changelogDate": "20190307123229",
+    "entityTableName": "agreement",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

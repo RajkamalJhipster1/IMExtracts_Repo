@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="agreementConfiguration">
+            <h2><span>Agreement Configuration</span> {{agreementConfiguration.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Configuration</span></dt>
+                <dd>
+                    <div *ngIf="agreementConfiguration.configuration">
+                        <a (click)="openFile(agreementConfiguration.configurationContentType, agreementConfiguration.configuration)">open</a>
+                        {{agreementConfiguration.configurationContentType}}, {{byteSize(agreementConfiguration.configuration)}}
+                    </div>
+                </dd>
+                <dt><span>Is Active</span></dt>
+                <dd>
+                    <span>{{agreementConfiguration.isActive}}</span>
+                </dd>
+                <dt><span>Createddate</span></dt>
+                <dd>
+                    <span>{{agreementConfiguration.createddate}}</span>
+                </dd>
+                <dt><span>Modified Date</span></dt>
+                <dd>
+                    <span>{{agreementConfiguration.modifiedDate}}</span>
+                </dd>
+                <dt><span>Agreement</span></dt>
+                <dd>
+                    <div *ngIf="agreementConfiguration.agreement">
+                        <a [routerLink]="['/agreement', agreementConfiguration.agreement?.id, 'view']">{{agreementConfiguration.agreement?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/agreement-configuration', agreementConfiguration.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
